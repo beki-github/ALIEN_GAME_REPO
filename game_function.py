@@ -10,6 +10,7 @@ def check_keydown_event(event,av_settings,screen,ship,bullets):
           ship.moving_left=True
      elif event.key==pygame.K_SPACE:
           # creating than adding new bullets
+          # i forgot where the bullets are deleted :(
           if len(bullets)<av_settings.bullet_allowed:
             new_bullet=Bullet(av_settings,screen,ship)
             bullets.add(new_bullet)
@@ -59,17 +60,20 @@ def create_fleet(av_setting,screen,aliens,ship):
      for row_number in range(row_numbers):
           for alien_number in range(alien_number_x):
                create_alien(av_setting,screen,alien_number,aliens,row_number)
+
+# this where copy of bullets that're outside the screen are deleted
+# why didn't  call it update bullets instead of update screen: cause it updates the whole screen after each iteration
 def update_screen(av_setting,screen,ship,aliens,bullets):
-    screen.fill(av_setting.bg_colour)
+    screen.fill(av_setting.bg_colour) #fill the screen after each iteration 
     #draw the bullets
     for bullet in bullets.sprites():
          bullet.draw_bullet()
     for bullet in bullets.copy():
             if bullet.rect.bottom <=0:
                 bullets.remove(bullet)
-    ship.blitme()
+    ship.blitme() 
     aliens.draw(screen)
-    pygame.display.flip()
+    pygame.display.flip() #this change the screen after 
 def check_fleet_postion(aliens,av_settings):
     for alien in aliens:
         if alien.check_edge():

@@ -25,7 +25,7 @@ def run_game():
         game_function.check_events(av_setting, screen, ship, bullets) 
         ship.update_postion()  # Ensure this method is defined in your Ship class
         bullets.update()
-        game_function.collision_check(aliens,bullets,av_setting,screen,ship, )
+        game_function.collision_check(aliens,bullets,av_setting,screen,ship)
         game_function.update_alien(av_setting,aliens)
         game_function.update_screen(av_setting, screen, ship, aliens, bullets)
 
