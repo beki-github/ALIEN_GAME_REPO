@@ -84,7 +84,7 @@ def update_alien(av_setting,aliens):
      check_fleet_postion(aliens,av_setting)
      aliens.update()
 def collision_check(aliens,bullets,av_setting,screen,ship):
-     collisons=pygame.sprite.groupcollide(bullets,aliens,False,True)
+     collisons=pygame.sprite.groupcollide(bullets,aliens,True,True)#if there is collision it deletes both objects from the screen.
      if len(aliens)==0:
           bullets.empty()
           create_fleet(av_setting,screen,aliens,ship,)
