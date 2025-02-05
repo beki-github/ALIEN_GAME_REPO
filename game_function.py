@@ -2,6 +2,8 @@ import sys
 import pygame
 from bullets import Bullet
 from aliens import Aliens
+import time
+import gamestate
 def check_keydown_event(event,av_settings,screen,ship,bullets):
      """check for for key up events"""
      if event.key==pygame.K_RIGHT:
@@ -78,19 +80,32 @@ def check_fleet_postion(aliens,av_settings):
     for alien in aliens:
         if alien.check_edge():
              alien.change_direction(aliens)
+ 
              break
+def ship_hit(aliens,screen, game_state,ship,bullets,av_setting):
+     time.sleep(0.5)
+     aliens.empty()
+     bullets.empty()
+     game_state.ship_left-=1
+     create_fleet(av_setting,screen,aliens,ship)
+     av_setting.alien_speed_factor=0.05
+     ship.center_ship()
+
+
 
 def update_alien(av_setting,aliens):
      check_fleet_postion(aliens,av_setting)
      aliens.update()
-def collision_check(aliens,bullets,av_setting,screen,ship):
-     collisons=pygame.sprite.groupcollide(bullets,aliens,True,True)#if there is collision it deletes both objects from the screen.
+def collision_check(aliens,bullets,av_setting,screen,ship,game_state):
+     collisons=pygame.sprite.groupcollide(bullets,aliens,False,True)#if there is collision it deletes both objects from the screen.
      if len(aliens)==0:
           bullets.empty()
           create_fleet(av_setting,screen,aliens,ship,)
           av_setting.alien_speed_factor+=1
      if pygame.sprite.spritecollideany(ship,aliens):
-          print("there is a collision  ")
+          print(" you lost the game ")
+          ship_hit(aliens,screen,game_state,ship,bullets,av_setting)
+          
 
      
 

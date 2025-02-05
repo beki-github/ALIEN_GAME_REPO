@@ -6,7 +6,7 @@ class Settings():
         self.bg_colour=(255,255,255)
         self.ship_speed_factor=1
     #BULLET attribute
-        self.bullet_widith=15
+        self.bullet_widith=200
         self.bullet_height=15
         self.bullet_colour=60,60,60
         self.bullet_speed_factor=1
