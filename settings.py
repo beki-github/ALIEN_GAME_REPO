@@ -10,7 +10,7 @@ class Settings():
         self.bullet_height=15
         self.bullet_colour=60,60,60
         self.bullet_speed_factor=1
-        self.bullet_allowed=3
+        self.bullet_allowed=200
     #ALIEN attribute :
         self.alien_speed_factor=0.05
     # MOVING DIRECTION// 1 for moving right // -1 for moving left //drop speed of alien=10

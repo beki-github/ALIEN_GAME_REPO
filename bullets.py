@@ -22,4 +22,5 @@ class Bullet(Sprite):
         self.rect.y=self.y
     def draw_bullet(self):
         # but this related to pygame class rect which i wish to understand some day ?
+        # i don't understend it still
         pygame.draw.rect(self.screen,self.colour,self.rect)
