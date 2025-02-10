@@ -105,8 +105,10 @@ def collision_check(aliens,bullets,av_setting,screen,ship,game_state):
      if pygame.sprite.spritecollideany(ship,aliens):
           print(" you lost the game ")
           ship_hit(aliens,screen,game_state,ship,bullets,av_setting)
-          
-
+     for alien in aliens:
+          screen_rect=screen.get_rect()
+          if alien.rect.bottom>=screen_rect.bottom:
+               ship_hit(aliens,screen,game_state,ship,bullets,av_setting)
      
 
      
