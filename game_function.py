@@ -91,7 +91,8 @@ def ship_hit(aliens,screen, game_state,ship,bullets,av_setting):
      av_setting.alien_speed_factor=0.05
      ship.center_ship()
 
-
+#i wrote this comment to cope with the guilt of wasting my time
+# LGTM!#
 
 def update_alien(av_setting,aliens):
      check_fleet_postion(aliens,av_setting)
